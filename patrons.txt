@@ -1,0 +1,10 @@
+1234567-John Smith-101 Main St. Orlando, FL 32801-0
+2345678-Mary Johnson-202 Pine Ave. Tampa, FL 33602-15.25
+3456789-James Brown-303 Oak Blvd. Miami, FL 33101-250
+4567890-Patricia Davis-404 Cedar Rd. Jacksonville, FL 32202-3.75
+5678901-Robert Wilson-505 Birch Ln. Tallahassee, FL 32301-40.5
+6789012-Linda Martinez-606 Maple Ct. Gainesville, FL 32601-12
+7890123-Michael Taylor-707 Elm Dr. St. Petersburg, FL 33701-0
+8901234-Barbara Anderson-808 Spruce Pl. Fort Myers, FL 33901-7.6
+9012345-William Thomas-909 Palm Way. Kissimmee, FL 34741-100
+1122334-Elizabeth White-110 River St. Daytona Beach, FL 32114-25.5
