@@ -4,7 +4,7 @@
  * CRN: CEN3024
  * Project LMS
  * DATE: 09/15/2025
- */
+ **/
 
 
 
@@ -18,12 +18,12 @@ import java.util.*;
 /**
  * In-memory LMS for patrons.
  * Uses LinkedHashMap to maintain insertion order for listing.
- */
+ **/
 public class LibrarySystem {
 
     private final Map<Integer, Patron> patrons = new LinkedHashMap<>();
 
-    /** Adds a patron if valid & unique. Returns true if added. */
+    /** Adds a patron if valid & unique. Returns true if added. **/
     public boolean addPatron(Patron p) {
         validatePatron(p);
         if (patrons.containsKey(p.id())) {
@@ -33,17 +33,17 @@ public class LibrarySystem {
         return true;
     }
 
-    /** Removes by ID. Returns true if removed. */
+    /** Removes by ID. Returns true if removed. **/
     public boolean removePatron(int id) {
         return patrons.remove(id) != null;
     }
 
-    /** Returns all patrons (in insertion order). */
+    /** Returns all patrons (in insertion order). **/
     public List<Patron> getAllPatrons() {
         return new ArrayList<>(patrons.values());
     }
 
-    /** Basic validation per requirements. */
+    /** Basic validation per requirements. **/
     private void validatePatron(Patron p) throws IllegalArgumentException {
         if (p.id() < 1_000_000 || p.id() > 9_999_999)
             throw new IllegalArgumentException("ID must be exactly 7 digits.");
@@ -55,7 +55,7 @@ public class LibrarySystem {
             throw new IllegalArgumentException("Fine must be between 0 and 250.");
     }
 
-    /** Parses a line in the form ID-Name-Address-Fine. Returns Patron. */
+    /** Parses a line in the form ID-Name-Address-Fine. Returns Patron. **/
     public static Patron parsePatronLine(String line) {
         // Split into 4 parts only; address may contain dashes after the first 2 fields,
         // so we split with a limit and then recombine the middle if needed.

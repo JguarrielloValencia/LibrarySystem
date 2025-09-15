@@ -14,6 +14,8 @@ public class Main {
     private static final Scanner IN = new Scanner(System.in);
     private static final LibrarySystem LMS = new LibrarySystem();
 
+    /** The choices what customer wants when code is ran */
+
     public static void main(String[] args) {
         while (true) {
             printMenu();
@@ -32,6 +34,7 @@ public class Main {
             System.out.println();
         }
     }
+    /** When code is ran this should prompt in window */
 
     private static void printMenu() {
         System.out.println("==============================================");
@@ -44,7 +47,7 @@ public class Main {
         System.out.println("5) Exit");
         System.out.println("==============================================");
     }
-
+    /** Patron adding  */
     private static void addPatronManual() {
         System.out.println("-- Add Patron (Manual) --");
 
@@ -81,14 +84,14 @@ public class Main {
             System.out.println("Failed to import: " + e.getMessage());
         }
     }
-
+    /** patron removed */
     private static void removePatron() {
         System.out.println("-- Remove Patron (By ID) --");
         int id = read7DigitId("Enter 7-digit ID to remove: ");
         boolean removed = LMS.removePatron(id);
         System.out.println(removed ? "Patron removed." : "No patron found with that ID.");
     }
-
+/** lists current patrons */
     private static void listPatrons() {
         System.out.println("-- Current Patrons --");
         List<Patron> list = LMS.getAllPatrons();
@@ -103,7 +106,9 @@ public class Main {
         }
     }
 
-    // ---- Input helpers -----------------------------------------------------
+
+    /** input helpers when selecting wrong integer */
+
 
     private static int readInt() {
         while (true) {
@@ -116,6 +121,7 @@ public class Main {
             }
         }
     }
+/** helper method should keep looping 7 digits only */
 
     private static int read7DigitId(String prompt) {
         while (true) {
@@ -129,6 +135,7 @@ public class Main {
             System.out.println("Invalid ID. It must be exactly 7 digits.");
         }
     }
+/** Prompts the user to enter a fine amount between 0.0 and 250.0.*/
 
     private static String readNonEmpty(String prompt) {
         while (true) {

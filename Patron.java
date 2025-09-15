@@ -12,6 +12,7 @@ import java.util.Objects;
 /**
  * @param id   7-digit unique
  * @param fine 0..250
+ *             intellij recommended records strings
  */
 public record Patron(int id, String name, String address, double fine) {
 
