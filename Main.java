@@ -51,13 +51,20 @@ public class Main {
     private static void addPatronManual() {
         System.out.println("-- Add Patron (Manual) --");
 
-        int id = read7DigitId("Enter 7-digit ID: ");
+        System.out.print("Enter 7-digit ID: ");
+        String idStr = IN.nextLine().trim();
+
         String name = readNonEmpty("Enter name: ");
         String address = readNonEmpty("Enter address: ");
         double fine = readDoubleInRange();
 
-        Patron p = new Patron(id, name, address, fine);
         try {
+            if (!idStr.matches("\\d{7}")) {
+                throw new IllegalArgumentException("ID must be exactly 7 digits.");
+            }
+            int id = Integer.parseInt(idStr);
+
+            Patron p = new Patron(id, name, address, fine);
             boolean added = LMS.addPatron(p);
             if (added) {
                 System.out.println("Patron added successfully.");
@@ -68,6 +75,7 @@ public class Main {
             System.out.println("Validation error: " + ex.getMessage());
         }
     }
+
 
     private static void importFromFile() {
         System.out.println("-- Import Patrons (From File) --");
@@ -84,14 +92,25 @@ public class Main {
             System.out.println("Failed to import: " + e.getMessage());
         }
     }
-    /** patron removed */
+    /* patron removed */
+    /**fyi this was tricky after reading your email */
+
     private static void removePatron() {
         System.out.println("-- Remove Patron (By ID) --");
-        int id = read7DigitId("Enter 7-digit ID to remove: ");
+
+        //  Check if the database is empty first
+        if (LMS.getAllPatrons().isEmpty()) {
+            System.out.println("No patrons in the system to remove.");
+            return; // exit early, don't ask for an ID
+        }
+
+        //  Only ask for ID if there are patrons
+        int id = read7DigitId();
         boolean removed = LMS.removePatron(id);
         System.out.println(removed ? "Patron removed." : "No patron found with that ID.");
     }
-/** lists current patrons */
+
+    /** lists current patrons */
     private static void listPatrons() {
         System.out.println("-- Current Patrons --");
         List<Patron> list = LMS.getAllPatrons();
@@ -123,9 +142,9 @@ public class Main {
     }
 /** helper method should keep looping 7 digits only */
 
-    private static int read7DigitId(String prompt) {
+    private static int read7DigitId() {
         while (true) {
-            System.out.print(prompt);
+            System.out.print("Enter 7-digit ID to remove: ");
             String s = IN.nextLine().trim();
             if (s.matches("\\d{7}")) {
                 try {
